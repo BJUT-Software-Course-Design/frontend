@@ -10,15 +10,22 @@
         <Icon type="ios-keypad"></Icon>
         {{$t('m.NavProblems')}}
       </Menu-item>
-      <Menu-item name="/teaching" style="font-size: 22px;">
+      
+       
+      <Menu-item name="/contest" style="font-size: 22px;">
         <Icon type="ios-book"></Icon>
         {{$t('m.Teaching')}}
+      </Menu-item>
+      <Menu-item name="/teaching" style="font-size: 22px;">
+        <Icon type="ios-book"></Icon>
+        {{$t('m.Teaching'+"老师")}}
+        
       </Menu-item>
       <!--
       <Menu-item name="/contest">
         <Icon type="trophy"></Icon>
         {{$t('m.Contests')}}
-      </Menu-item>
+      </Menu-item>   老版contests
       -->
       <!-- <Menu-item name="/status">
         <Icon type="ios-pulse-strong"></Icon>

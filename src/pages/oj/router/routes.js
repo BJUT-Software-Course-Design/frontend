@@ -15,7 +15,8 @@ import {
   SubmissionDetails,
   SubmissionList,
   UserHome,
-  Teaching
+  Teaching,
+  HomeworkProblemList
 } from '../views'
 
 import * as Contest from '@oj/views/contest'
@@ -73,12 +74,13 @@ export default [
   {
     name: 'contest-list',
     path: '/contest',
-    meta: {title: 'Contest List'},
+    meta: {title: 'Teaching'},
     component: Contest.ContestList
   },
   {
     name: 'contest-details',
     path: '/contest/:contestID/',
+    redirect: { name: 'contest-problem-list' },
     component: Contest.ContestDetails,
     meta: {title: 'Contest Details'},
     children: [
@@ -137,6 +139,12 @@ export default [
     path: '/teaching',
     component: Teaching,
     meta: {title: 'Teaching'}
+  },
+  {
+    name: 'homework-problem-list',
+    path: '/teaching',
+    component: HomeworkProblemList, // 确保路径和实际位置一致
+    meta: { title: 'Homework Problem List' }
   },
   {
     path: '/setting',

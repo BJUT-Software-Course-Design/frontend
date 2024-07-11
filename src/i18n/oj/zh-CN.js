@@ -128,7 +128,7 @@ export const m = {
   Underway: '进行中',
   Not_Started: '筹备中',
   Ended: '已结束',
-  No_contest: '尚无练习或比赛',
+  No_contest: '尚无作业',
   Please_login_first: '请先登录！',
   // ContestProblemList.vue
   Problems_List: '题目列表',
@@ -147,7 +147,7 @@ export const m = {
   Home: '首页',
   Teaching: '教学',
   NavProblems: '题库',
-  Contests: '练习&比赛',
+  Contests: '作业列表',
   NavStatus: '状态',
   Rank: '排名',
   ACM_Rank: 'ACM 排名',

@@ -264,6 +264,16 @@ export default {
       params
     })
   },
+  getHomeworkList (offset, limit, params) {
+    let queryParams = {
+      offset,
+      limit,
+      ...params
+    }
+    return ajax('homework', 'get', {
+      params: queryParams
+    })
+  },
   updateACInfoCheckedStatus (data) {
     return ajax('admin/contest/acm_helper', 'put', {
       data

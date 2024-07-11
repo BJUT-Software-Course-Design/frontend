@@ -34,24 +34,22 @@
     </div>
     <div v-show="showMenu" id="contest-menu">
       <VerticalMenu @on-click="handleRoute">
+         <!-- 移除右侧的浏览菜单 -->
+          <!-- 
         <VerticalMenu-item :route="{name: 'contest-details', params: {contestID: contestID}}">
           <Icon type="home"></Icon>
           {{$t('m.Overview')}}
-        </VerticalMenu-item>
-
-        <VerticalMenu-item :disabled="contestMenuDisabled"
-                           :route="{name: 'contest-announcement-list', params: {contestID: contestID}}">
-          <Icon type="chatbubble-working"></Icon>
-          {{$t('m.Announcements')}}
-        </VerticalMenu-item>
-
+        </VerticalMenu-item> 
+-->
+        <!-- Removed Announcements Menu Item -->
+        
         <VerticalMenu-item :disabled="contestMenuDisabled"
                            :route="{name: 'contest-problem-list', params: {contestID: contestID}}">
           <Icon type="ios-photos"></Icon>
           {{$t('m.Problems')}}
         </VerticalMenu-item>
 
-        <VerticalMenu-item v-if="OIContestRealTimePermission"
+        <VerticalMenu-item 
                            :disabled="contestMenuDisabled"
                            :route="{name: 'contest-submission-list'}">
           <Icon type="navicon-round"></Icon>
@@ -59,7 +57,7 @@
         </VerticalMenu-item>
 
         <VerticalMenu-item v-if="OIContestRealTimePermission"
-                           :disabled="contestMenuDisabled"
+                           :disabled="contestMenuDisabled" 
                            :route="{name: 'contest-rank', params: {contestID: contestID}}">
           <Icon type="stats-bars"></Icon>
           {{$t('m.Rankings')}}
@@ -106,18 +104,18 @@
               return h('span', time.utcToLocal(params.row.end_time))
             }
           },
-          {
-            title: this.$i18n.t('m.ContestType'),
-            render: (h, params) => {
-              return h('span', this.$i18n.t('m.' + params.row.contest_type ? params.row.contest_type.replace(' ', '_') : ''))
-            }
-          },
-          {
-            title: this.$i18n.t('m.Rule'),
-            render: (h, params) => {
-              return h('span', this.$i18n.t('m.' + params.row.rule_type))
-            }
-          },
+          // {
+          //   title: this.$i18n.t('m.ContestType'),
+          //   render: (h, params) => {
+          //     return h('span', this.$i18n.t('m.' + params.row.contest_type ? params.row.contest_type.replace(' ', '_') : ''))
+          //   }
+          // },
+          // {
+          //   title: this.$i18n.t('m.Rule'),
+          //   render: (h, params) => {
+          //     return h('span', this.$i18n.t('m.' + params.row.rule_type))
+          //   }
+          // },
           {
             title: this.$i18n.t('m.Creator'),
             render: (h, data) => {
@@ -140,6 +138,9 @@
           }, 1000)
         }
       })
+      if (this.route_name === 'contest-details') {
+        this.$router.push({ name: 'contest-problem-list', params: { contestID: this.contestID } })
+  }
     },
     methods: {
       ...mapActions(['changeDomTitle']),
