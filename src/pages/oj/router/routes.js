@@ -15,8 +15,7 @@ import {
   SubmissionDetails,
   SubmissionList,
   UserHome,
-  Teaching,
-  HomeworkProblemList
+  Teaching
 } from '../views'
 
 import * as Contest from '@oj/views/contest'
@@ -139,12 +138,6 @@ export default [
     path: '/teaching',
     component: Teaching,
     meta: {title: 'Teaching'}
-  },
-  {
-    name: 'homework-problem-list',
-    path: '/teaching',
-    component: HomeworkProblemList, // 确保路径和实际位置一致
-    meta: { title: 'Homework Problem List' }
   },
   {
     path: '/setting',

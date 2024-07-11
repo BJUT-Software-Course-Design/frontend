@@ -1,34 +1,21 @@
 <template>
   <Row type="flex" :gutter="18">
-    <Col :span=24>
+    <Col :span=19>
     <Panel shadow>
-      <div slot="title">{{$t('m.Problems_List')}}</div>
+      <div slot="title">{{$t('m.Problem_List')}}</div>
       <div slot="extra">
         <ul class="filter">
-          <!-- <li>
-            <Dropdown @on-click="filterByDifficulty">
-              <span>{{query.difficulty === '' ? this.$i18n.t('m.Difficulty') : this.$i18n.t('m.' + query.difficulty)}}
-                <Icon type="arrow-down-b"></Icon>
-              </span>
-              <Dropdown-menu slot="list">
-                <Dropdown-item name="">{{$t('m.All')}}</Dropdown-item>
-                <Dropdown-item name="Low">{{$t('m.Low')}}</Dropdown-item>
-                <Dropdown-item name="Mid" >{{$t('m.Mid')}}</Dropdown-item>
-                <Dropdown-item name="High">{{$t('m.High')}}</Dropdown-item>
-              </Dropdown-menu>
-            </Dropdown>
-          </li> -->
-          <!-- <li>
+          <li>
             <i-switch size="large" @on-change="handleTagsVisible">
               <span slot="open">{{$t('m.Tags')}}</span>
               <span slot="close">{{$t('m.Tags')}}</span>
             </i-switch>
-          </li> -->
+          </li>
           <li>
             <Input v-model="query.keyword"
                    @on-enter="filterByKeyword"
                    @on-click="filterByKeyword"
-                   placeholder="关键字"
+                   placeholder="关键词"
                    icon="ios-search-strong"/>
           </li>
           <li>
@@ -46,11 +33,35 @@
              disabled-hover></Table>
     </Panel>
     <Pagination
-      :total="total" :page-size.sync="query.limit" @on-change="pushRouter" @on-page-size-change="pushRouter" :current.sync="query.page" :show-sizer="true"></Pagination>
+      :total="total" 
+      :page-size.sync="query.limit" 
+      @on-change="pushRouter" 
+      @on-page-size-change="pushRouter" 
+      :current.sync="query.page" 
+      :show-sizer="true">
+    </Pagination>
 
     </Col>
 
-    <!-- z -->
+    <Col :span="5">
+    <Panel :padding="10">
+      <div slot="title" class="taglist-title">{{$t('m.Tags')}}</div>
+      <Button v-for="tag in tagList"
+              :key="tag.name"
+              @click="filterByTag(tag.name)"
+              type="ghost"
+              :disabled="query.tag === tag.name"
+              shape="circle"
+              class="tag-btn">{{tag.name}}
+      </Button>
+
+      <Button long id="pick-one" @click="pickone">
+        <Icon type="shuffle"></Icon>
+        {{$t('m.Pick_One')}}
+      </Button>
+    </Panel>
+    <Spin v-if="loadings.tag" fix size="large"></Spin>
+    </Col>
   </Row>
 </template>
 
@@ -84,7 +95,6 @@
                 on: {
                   click: () => {
                     this.$router.push({name: 'problem-details', params: {problemID: params.row._id}})
-                    console.log(params.row._id)
                   }
                 },
                 style: {
@@ -116,20 +126,6 @@
               }, params.row.title)
             }
           },
-          // {
-          //   title: this.$i18n.t('m.Level'),
-          //   render: (h, params) => {
-          //     let t = params.row.difficulty
-          //     let color = 'blue'
-          //     if (t === 'Low') color = 'green'
-          //     else if (t === 'High') color = 'yellow'
-          //     return h('Tag', {
-          //       props: {
-          //         color: color
-          //       }
-          //     }, this.$i18n.t('m.' + params.row.difficulty))
-          //   }
-          // },
           {
             title: this.$i18n.t('m.Total'),
             key: 'submission_number'
@@ -151,7 +147,6 @@
         routeName: '',
         query: {
           keyword: '',
-          difficulty: '',
           tag: '',
           page: 1,
           limit: 10
@@ -165,7 +160,6 @@
       init (simulate = false) {
         this.routeName = this.$route.name
         let query = this.$route.query
-        this.query.difficulty = query.difficulty || ''
         this.query.keyword = query.keyword || ''
         this.query.tag = query.tag || ''
         this.query.page = parseInt(query.page) || 1
@@ -208,11 +202,6 @@
       },
       filterByTag (tagName) {
         this.query.tag = tagName
-        this.query.page = 1
-        this.pushRouter()
-      },
-      filterByDifficulty (difficulty) {
-        this.query.difficulty = difficulty
         this.query.page = 1
         this.pushRouter()
       },

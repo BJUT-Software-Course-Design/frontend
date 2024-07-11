@@ -18,14 +18,12 @@
           <div class="left">
             <p>{{$t('m.UserHomeSolved')}}</p>
             <p class="emphasis">{{profile.accepted_number}}</p>
+            <!-- <p class="emphasis">{{0}}</p> -->
           </div>
           <div class="middle">
             <p>{{$t('m.UserHomeserSubmissions')}}</p>
             <p class="emphasis">{{profile.submission_number}}</p>
-          </div>
-          <div class="right">
-            <p>{{$t('m.UserHomeScore')}}</p>
-            <p class="emphasis">{{profile.total_score}}</p>
+            <!-- <p class="emphasis">{{0}}</p> -->
           </div>
         </div>
         <div id="problems">
@@ -52,9 +50,9 @@
           <a :href="'mailto:'+ profile.user.email">
             <Icon class="icon" type="ios-email-outline" size="30"></Icon>
           </a>
-          <a :href="profile.blog">
+          <!-- <a :href="profile.blog">
             <Icon class="icon" type="ios-world-outline" size="30"></Icon>
-          </a>
+          </a> -->
         </div>
       </div>
     </Card>

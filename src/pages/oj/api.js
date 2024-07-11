@@ -47,6 +47,9 @@ export default {
   getCaptcha () {
     return ajax('captcha', 'get')
   },
+  getUserRole () {
+    return ajax('get_user_role', 'get')
+  },
   getUserInfo (username = undefined) {
     return ajax('profile', 'get', {
       params: {
@@ -262,16 +265,6 @@ export default {
   getACMACInfo (params) {
     return ajax('admin/contest/acm_helper', 'get', {
       params
-    })
-  },
-  getHomeworkList (offset, limit, params) {
-    let queryParams = {
-      offset,
-      limit,
-      ...params
-    }
-    return ajax('homework', 'get', {
-      params: queryParams
     })
   },
   updateACInfoCheckedStatus (data) {

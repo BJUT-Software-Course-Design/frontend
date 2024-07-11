@@ -7,7 +7,6 @@ import NotFound from './general/404.vue'
 import Home from './general/Home.vue'
 import Announcements from './general/Announcements.vue'
 import Teaching from './teaching/Teaching.vue'
-import HomeworkProblemList from './teaching/HomeworkProblemList.vue'
 
 // Grouping Components in the Same Chunk
 const SubmissionList = () => import(/* webpackChunkName: "submission" */ '@oj/views/submission/SubmissionList.vue')
@@ -23,7 +22,7 @@ const Problem = () => import(/* webpackChunkName: "Problem" */ '@oj/views/proble
 
 export {
   Home, NotFound, Announcements,
-  Logout, UserHome, About, FAQ, Teaching, HomeworkProblemList,
+  Logout, UserHome, About, FAQ, Teaching,
   ProblemList, Problem,
   ACMRank, OIRank,
   SubmissionList, SubmissionDetails,

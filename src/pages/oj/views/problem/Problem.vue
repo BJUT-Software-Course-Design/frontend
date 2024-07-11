@@ -147,7 +147,7 @@
           <li>
             <p>{{$t('m.Memory_Limit')}}</p>
             <p>{{problem.memory_limit}}MB</p></li>
-          <li>
+          <!-- <li> -->
           <li>
             <p>{{$t('m.IOMode')}}</p>
             <p>{{problem.io_mode.io_mode}}</p>
@@ -162,7 +162,7 @@
             <p>{{$t('m.Score')}}</p>
             <p>{{problem.total_score}}</p>
           </li>
-          <!-- <li>
+          <li>
             <p>{{$t('m.Tags')}}</p>
             <p>
               <Poptip trigger="hover" placement="left-end">
@@ -172,11 +172,11 @@
                 </div>
               </Poptip>
             </p>
-          </li> -->
+          </li>
         </ul>
       </Card>
 
-      <Card id="pieChart" :padding="0" v-if="!this.contestID || OIContestRealTimePermission">
+      <!-- <Card id="pieChart" :padding="0" v-if="!this.contestID || OIContestRealTimePermission">
         <div slot="title">
           <Icon type="ios-analytics"></Icon>
           <span class="card-title">{{$t('m.Statistic')}}</span>
@@ -185,7 +185,7 @@
         <div class="echarts">
           <ECharts :options="pie"></ECharts>
         </div>
-      </Card>
+      </Card> -->
     </div>
 
     <Modal v-model="graphVisible">

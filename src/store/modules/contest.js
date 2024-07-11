@@ -47,12 +47,11 @@ const getters = {
       (state.contest.created_by.id === rootGetters.user.id || rootGetters.user.admin_type === USER_TYPE.SUPER_ADMIN)
   },
   contestMenuDisabled: (state, getters) => {
-    // if (getters.isContestAdmin) return false
-    // if (state.contest.contest_type === CONTEST_TYPE.PUBLIC) {
-    //   return getters.contestStatus === CONTEST_STATUS.NOT_START
-    // }
-    // return !state.access
-    return false
+    if (getters.isContestAdmin) return false
+    if (state.contest.contest_type === CONTEST_TYPE.PUBLIC) {
+      return getters.contestStatus === CONTEST_STATUS.NOT_START
+    }
+    return !state.access
   },
   OIContestRealTimePermission: (state, getters, _, rootGetters) => {
     if (getters.contestRuleType === 'ACM' || getters.contestStatus === CONTEST_STATUS.ENDED) {
