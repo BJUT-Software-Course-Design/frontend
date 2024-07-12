@@ -56,7 +56,7 @@
           {{$t('m.Submissions')}}
         </VerticalMenu-item>
 
-        <VerticalMenu-item v-if="OIContestRealTimePermission"
+        <!-- <VerticalMenu-item v-if="OIContestRealTimePermission"
                            :disabled="contestMenuDisabled" 
                            :route="{name: 'contest-rank', params: {contestID: contestID}}">
           <Icon type="stats-bars"></Icon>
@@ -67,7 +67,7 @@
                            :route="{name: 'acm-helper', params: {contestID: contestID}}">
           <Icon type="ios-paw"></Icon>
           {{$t('m.Admin_Helper')}}
-        </VerticalMenu-item>
+        </VerticalMenu-item> -->
       </VerticalMenu>
     </div>
   </div>
