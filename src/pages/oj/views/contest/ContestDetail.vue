@@ -67,7 +67,7 @@
                            :route="{name: 'acm-helper', params: {contestID: contestID}}">
           <Icon type="ios-paw"></Icon>
           {{$t('m.Admin_Helper')}}
-        </VerticalMenu-item>
+        </VerticalMenu-item> -->
       </VerticalMenu>
     </div>
   </div>

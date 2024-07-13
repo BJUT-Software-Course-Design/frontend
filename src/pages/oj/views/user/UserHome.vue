@@ -50,7 +50,7 @@
           <a :href="'mailto:'+ profile.user.email">
             <Icon class="icon" type="ios-email-outline" size="30"></Icon>
           </a>
-          <a :href="profile.blog">
+          <!-- <a :href="profile.blog">
             <Icon class="icon" type="ios-world-outline" size="30"></Icon>
           </a>
         </div> -->
