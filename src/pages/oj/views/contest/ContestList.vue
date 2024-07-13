@@ -91,9 +91,9 @@
         total: 3,//假设有三个竞赛
         rows: '',
         contests: [
-       // { id: 1, title: '第一次作业', contest_type: 'Public', start_time: '2024-07-10 10:00:00', end_time: '2024-07-11 12:00:00', status: 0 },
-       // { id: 2, title: '第二次作业', contest_type: 'Private', start_time: '2024-07-10 10:00:00', end_time: '2024-07-11 12:00:00', status: 0},
-        //{ id: 3, title: '第三次作业', contest_type: 'Public', start_time: '2024-07-10 10:00:00', end_time: '2024-07-10 8:00:00', status: -1 }
+      // { id: 1, title: '第一次作业', contest_type: 'Public', start_time: '2024-07-10 10:00:00', end_time: '2024-07-11 12:00:00', status: 0 },
+      // { id: 2, title: '第二次作业', contest_type: 'Private', start_time: '2024-07-10 10:00:00', end_time: '2024-07-11 12:00:00', status: 0},
+      // { id: 3, title: '第三次作业', contest_type: 'Public', start_time: '2024-07-10 10:00:00', end_time: '2024-07-10 8:00:00', status: -1 }
     ],
         CONTEST_STATUS_REVERSE: CONTEST_STATUS_REVERSE,
         cur_contest_id: ''
