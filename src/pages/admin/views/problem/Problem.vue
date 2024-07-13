@@ -190,7 +190,6 @@
             <el-form-item :label="$t('m.Type')">
               <el-radio-group v-model="problem.rule_type" :disabled="disableRuleType">
                 <el-radio label="ACM">ACM</el-radio>
-                <el-radio label="OI">OI</el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -212,19 +211,7 @@
             <el-form-item :label="$t('m.IOMode')">
               <el-radio-group v-model="problem.io_mode.io_mode">
                 <el-radio label="Standard IO">Standard IO</el-radio>
-                <el-radio label="File IO">File IO</el-radio>
               </el-radio-group>
-            </el-form-item>
-          </el-col>
-
-          <el-col :span="4" v-if="problem.io_mode.io_mode == 'File IO'">
-            <el-form-item :label="$t('m.InputFileName')" required>
-              <el-input type="text" v-model="problem.io_mode.input"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="4" v-if="problem.io_mode.io_mode == 'File IO'">
-            <el-form-item :label="$t('m.OutputFileName')" required>
-              <el-input type="text" v-model="problem.io_mode.output"></el-input>
             </el-form-item>
           </el-col>
 
@@ -239,18 +226,6 @@
               <el-table-column
                 prop="output_name"
                 :label="$t('m.Output')">
-              </el-table-column>
-              <el-table-column
-                prop="score"
-                :label="$t('m.Score')">
-                <template slot-scope="scope">
-                  <el-input
-                    size="small"
-                    :placeholder="$t('m.Score')"
-                    v-model="scope.row.score"
-                    :disabled="problem.rule_type !== 'OI'">
-                  </el-input>
-                </template>
               </el-table-column>
             </el-table>
           </el-col>
@@ -544,19 +519,6 @@
           this.error.testCase = 'Test case is not uploaded yet'
           this.$error(this.error.testCase)
           return
-        }
-        if (this.problem.rule_type === 'OI') {
-          for (let item of this.problem.test_case_score) {
-            try {
-              if (parseInt(item.score) <= 0) {
-                this.$error('Invalid test case score')
-                return
-              }
-            } catch (e) {
-              this.$error('Test case score must be an integer')
-              return
-            }
-          }
         }
         this.problem.languages = this.problem.languages.sort()
         this.problem.template = {}

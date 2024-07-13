@@ -10,16 +10,16 @@
         <Icon type="ios-keypad"></Icon>
         {{$t('m.NavProblems')}}
       </Menu-item>
-      <Menu-item name="/teaching" style="font-size: 22px;">
+      <!-- <Menu-item name="/teaching" style="font-size: 22px;">
+        <Icon type="ios-book"></Icon>
+        {{$t('m.Teaching')}}
+      </Menu-item> -->
+      
+      <Menu-item name="/contest" style="font-size: 22px;">
         <Icon type="ios-book"></Icon>
         {{$t('m.Teaching')}}
       </Menu-item>
-      <!--
-      <Menu-item name="/contest">
-        <Icon type="trophy"></Icon>
-        {{$t('m.Contests')}}
-      </Menu-item>
-      -->
+     
       <!-- <Menu-item name="/status">
         <Icon type="ios-pulse-strong"></Icon>
         {{$t('m.NavStatus')}}

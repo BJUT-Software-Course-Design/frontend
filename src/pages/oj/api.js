@@ -47,6 +47,9 @@ export default {
   getCaptcha () {
     return ajax('captcha', 'get')
   },
+  getUserRole () {
+    return ajax('get_user_role', 'get')
+  },
   getUserInfo (username = undefined) {
     return ajax('profile', 'get', {
       params: {

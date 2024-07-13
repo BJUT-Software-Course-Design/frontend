@@ -6,12 +6,12 @@
              :columns="ACMTableColumns"
              :data="problems"
              @on-row-click="goContestProblem"
-             :no-data-text="$t('m.No_Problems')"></Table>
+             no-data-text="暂无作业"></Table>
       <Table v-else
              :data="problems"
              :columns="OITableColumns"
              @on-row-click="goContestProblem"
-             no-data-text="$t('m.No_Problems')"></Table>
+             no-data-text="暂无作业"></Table>
     </Panel>
   </div>
 </template>
@@ -75,6 +75,7 @@
           }
         })
       },
+      
       goContestProblem (row) {
         this.$router.push({
           name: 'contest-problem-details',

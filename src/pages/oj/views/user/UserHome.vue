@@ -18,14 +18,12 @@
           <div class="left">
             <p>{{$t('m.UserHomeSolved')}}</p>
             <p class="emphasis">{{profile.accepted_number}}</p>
+            <!-- <p class="emphasis">{{0}}</p> -->
           </div>
           <div class="middle">
             <p>{{$t('m.UserHomeserSubmissions')}}</p>
             <p class="emphasis">{{profile.submission_number}}</p>
-          </div>
-          <div class="right">
-            <p>{{$t('m.UserHomeScore')}}</p>
-            <p class="emphasis">{{profile.total_score}}</p>
+            <!-- <p class="emphasis">{{0}}</p> -->
           </div>
         </div>
         <div id="problems">
@@ -45,7 +43,7 @@
             </div>
           </div>
         </div>
-        <div id="icons">
+        <!-- <div id="icons">
           <a :href="profile.github">
             <Icon type="social-github-outline" size="30"></Icon>
           </a>
@@ -55,7 +53,7 @@
           <a :href="profile.blog">
             <Icon class="icon" type="ios-world-outline" size="30"></Icon>
           </a>
-        </div>
+        </div> -->
       </div>
     </Card>
   </div>

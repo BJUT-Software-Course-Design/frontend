@@ -56,7 +56,7 @@
         </el-pagination>
       </div>
     </panel>
-    <panel title="Import QDUOJ Problems (beta)">
+    <panel title="Import OJ Problems">
       <el-upload
         ref="QDU"
         action="/api/admin/import_problem"
@@ -71,24 +71,6 @@
         :on-error="uploadFailed">
         <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">Choose File</el-button>
         <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('QDU')">Upload</el-button>
-      </el-upload>
-    </panel>
-
-    <panel title="Import FPS Problems (beta)">
-      <el-upload
-        ref="FPS"
-        action="/api/admin/import_fps"
-        name="file"
-        :file-list="fileList2"
-        :show-file-list="true"
-        :with-credentials="true"
-        :limit="3"
-        :on-change="onFile2Change"
-        :auto-upload="false"
-        :on-success="uploadSucceeded"
-        :on-error="uploadFailed">
-        <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">Choose File</el-button>
-        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('FPS')">Upload</el-button>
       </el-upload>
     </panel>
   </div>
@@ -146,9 +128,6 @@
       },
       onFile1Change (file, fileList) {
         this.fileList1 = fileList.slice(-1)
-      },
-      onFile2Change (file, fileList) {
-        this.fileList2 = fileList.slice(-1)
       },
       uploadSucceeded (response) {
         if (response.error) {

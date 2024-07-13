@@ -73,12 +73,13 @@ export default [
   {
     name: 'contest-list',
     path: '/contest',
-    meta: {title: 'Contest List'},
+    meta: {title: 'Teaching'},
     component: Contest.ContestList
   },
   {
     name: 'contest-details',
     path: '/contest/:contestID/',
+    redirect: { name: 'contest-problem-list' },
     component: Contest.ContestDetails,
     meta: {title: 'Contest Details'},
     children: [

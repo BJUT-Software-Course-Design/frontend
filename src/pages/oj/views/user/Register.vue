@@ -29,7 +29,12 @@
             <i-option value="student">{{$t('m.Student')}}</i-option>
           </i-select>
         </div>
-      </FormItem> 
+      </FormItem>
+      <FormItem v-if="formRegister.character === 'teacher'" prop="inviteCode">
+        <Input type="text" v-model="formRegister.inviteCode" :placeholder="$t('m.InviteCode')" size="large" @on-enter="handleRegister">
+        <Icon type="ios-barcode-outline" slot="prepend"></Icon>
+        </Input>
+      </FormItem>
       <FormItem prop="captcha" style="margin-bottom:10px">
         <div class="oj-captcha">
           <div class="oj-captcha-code">
@@ -106,7 +111,13 @@
         }
         callback()
       }
-
+      const CheckInviteCode = (rule, value, callback) => {
+        if (this.formRegister.character === 'teacher' && value !== '12345') {
+          callback(new Error(this.$i18n.t('m.InvalidInviteCode')))
+        } else {
+          callback()
+        }
+      }
       return {
         btnRegisterLoading: false,
         formRegister: {
@@ -138,7 +149,10 @@
           ],
           character: [
           {required: true, message: 'Please select a role', trigger: 'change'}
-        ]
+        ],
+          inviteCode: [
+            {validator: CheckInviteCode, trigger: 'blur'}
+          ]
         }
       }
     },
@@ -149,6 +163,13 @@
           mode,
           visible: true
         })
+      },
+      handleRoleChange(value) {
+        if (value === 'teacher') {
+          this.$set(this.ruleRegister, 'inviteCode', [{ validator: CheckInviteCode, trigger: 'blur' }]);
+        } else {
+          this.$delete(this.ruleRegister, 'inviteCode');
+        }
       },
       handleRegister () {
         this.validateForm('formRegister').then(valid => {
