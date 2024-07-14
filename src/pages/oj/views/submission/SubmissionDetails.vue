@@ -25,18 +25,6 @@
     <Col :span="20">
       <Highlight :code="submission.code" :language="submission.language" :border-color="status.color"></Highlight>
     </Col>
-    <Col v-if="submission.can_unshare" :span="20">
-      <div id="share-btn">
-        <Button v-if="submission.shared"
-                type="warning" size="large" @click="shareSubmission(false)">
-          {{$t('m.UnShare')}}
-        </Button>
-        <Button v-else
-                type="primary" size="large" @click="shareSubmission(true)">
-          {{$t('m.Share')}}
-        </Button>
-      </div>
-    </Col>
   </Row>
 
 </template>
@@ -145,14 +133,6 @@
         }, () => {
           this.loading = false
         })
-      },
-      shareSubmission (shared) {
-        let data = {id: this.submission.id, shared: shared}
-        api.updateSubmission(data).then(res => {
-          this.getSubmission()
-          this.$success(this.$i18n.t('m.Succeeded'))
-        }, () => {
-        })
       }
     },
     computed: {
@@ -198,12 +178,6 @@
       font-size: 16px;
       padding: 10px;
     }
-  }
-
-  #share-btn {
-    float: right;
-    margin-top: 5px;
-    margin-right: 10px;
   }
 
   pre {
